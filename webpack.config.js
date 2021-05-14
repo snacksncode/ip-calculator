@@ -1,7 +1,10 @@
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
-  entry: { main: "./src/ts/main.ts" },
+  entry: {
+    index: "./src/ts/index.ts",
+    calculator: "./src/ts/calculator.ts",
+  },
   devtool: "source-map",
   optimization: {
     usedExports: true,

@@ -7,11 +7,19 @@ module.exports = merge(common, {
   mode: "development",
   output: {
     filename: "[name].bundle.js",
+    chunkFilename: "[id].bundle_[chunkhash].js",
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/template.html",
+      template: "./src/pages/index.html",
+      filename: "index.html",
+      chunks: ["index"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/calculator.html",
+      filename: "calculator.html",
+      chunks: ["calculator"],
     }),
   ],
   devServer: {
