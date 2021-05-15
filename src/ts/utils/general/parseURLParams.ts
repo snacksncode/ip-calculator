@@ -1,3 +1,4 @@
+//NOT MINE, JOINKED FROM STACKOVERFLOW
 interface IResult {
   [key: string]: string | string[];
 }

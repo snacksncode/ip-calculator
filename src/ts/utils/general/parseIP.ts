@@ -1,5 +1,5 @@
-import IP from "../interfaces/IP";
-import decToBin from "./decToBin";
+import IP from "../../interfaces/IP";
+import decToBin from "../converters/decToBin";
 
 const parseIP = async (ipString: string): Promise<IP> => {
   //split ip into octets
