@@ -2,7 +2,7 @@ interface IResult {
   [key: string]: string | string[];
 }
 
-function ParseURLParams(url?: string) {
+function parseURLParams(url?: string) {
   if (!url) url = location.href;
   var question = url.indexOf("?");
   var hash = url.indexOf("#");
@@ -30,4 +30,4 @@ function ParseURLParams(url?: string) {
   return result;
 }
 
-export default ParseURLParams;
+export default parseURLParams;
