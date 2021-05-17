@@ -1,6 +1,7 @@
 import "../scss/main.scss";
 import calculateBroadcastAddress from "./utils/calculations/calculateBroadcastAddress";
 import calculateHosts from "./utils/calculations/calculateHosts";
+import calculateMinMaxHostAddress from "./utils/calculations/calculateLastHostAddress";
 import calculateNetworkAddress from "./utils/calculations/calculateNetworkAddress";
 import checkMaskToIPValidity from "./utils/general/checkMaskToIPValidity";
 import getIPClass from "./utils/getters/getIPClass";
@@ -16,12 +17,17 @@ const main = async () => {
     //show selected ip and mask in form input
     const broadcastAddress = calculateBroadcastAddress(ip, mask);
     const networkAddress = calculateNetworkAddress(ip, mask);
-    console.log("broadcast", broadcastAddress);
-    console.log("network", networkAddress);
     const amountOfHosts = calculateHosts(mask);
-    console.log("hosts", amountOfHosts);
     const IPClass = getIPClass(ip);
-    console.log("Class", IPClass);
+    const maxHost = calculateMinMaxHostAddress(broadcastAddress, "max");
+    const minHost = calculateMinMaxHostAddress(networkAddress, "min");
+
+    console.info("Broadcast:", broadcastAddress);
+    console.info("Network:", networkAddress);
+    console.info("Hosts:", amountOfHosts);
+    console.info("IP Class:", IPClass);
+    console.info("Max Host:", maxHost);
+    console.info("Min Host:", minHost);
   } catch (e) {
     alert(e.message);
   }
