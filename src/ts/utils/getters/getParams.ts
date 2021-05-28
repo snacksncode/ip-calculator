@@ -8,7 +8,8 @@ import getUserIP from "./getUserIP";
 const getParams = async (): Promise<Params> => {
   const rawParams = parseURLParams();
   //check if both parameters were passed
-  if (!rawParams.hasOwnProperty("ip") || !rawParams.hasOwnProperty("mask")) throw new Error("Missing IP or MASK parameters");
+  if (!rawParams.hasOwnProperty("ip") || !rawParams.hasOwnProperty("mask"))
+    throw new Error("Missing IP or MASK parameters");
   let ip: IP = null;
   //if no ip is provided use user ip, otherwise parse given ip
   if (rawParams.ip !== "") {

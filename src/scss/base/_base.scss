@@ -11,6 +11,12 @@ html {
 body {
   background-color: var(--bg-clr-400);
   color: var(--text-clr-400);
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: var(--accent-400);
+  color: var(--text-clr-400);
 }
 
 code {

@@ -1,1 +1,41 @@
-// Styles for button component
+.button {
+  --border-size: 2px;
+  --accent: var(--accent-400);
+  --easing: cubic-bezier(0.65, 0, 0.35, 1);
+  padding: 0.5em 2em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  color: var(--text-clr-400);
+  border: var(--border-size) solid var(--accent);
+  z-index: 1;
+  position: relative;
+  transition: border-color 250ms;
+  transition-timing-function: var(--easing);
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    width: calc(100% + 2 * var(--border-size));
+    height: calc(100% + 2 * var(--border-size));
+    top: calc(-1 * var(--border-size));
+    left: calc(-1 * var(--border-size));
+    background-color: var(--accent);
+    z-index: -1;
+    transform: scale(0.6);
+    opacity: 0;
+    transition: transform 250ms, opacity 250ms;
+    transition-timing-function: var(--easing);
+  }
+  &:hover,
+  &:focus {
+    border-color: transparent;
+    outline: none;
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

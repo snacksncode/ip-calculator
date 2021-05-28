@@ -1,0 +1,11 @@
+.two-columns {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 2rem;
+  & > * {
+    width: 100%;
+    margin: 0 !important;
+  }
+}

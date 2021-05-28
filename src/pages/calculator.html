@@ -6,49 +6,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Details | IP Calculator</title>
   </head>
-  <body>
-    Calculator nibba
-    <form action="calculator.html" type="POST">
-      <input type="text" name="ip" id="ip" />
-      <select name="mask" id="mask">
-        <option value="0">0.0.0.0 [/0]</option>
-        <option value="1">128.0.0.0 [/1]</option>
-        <option value="2">192.0.0.0 [/2]</option>
-        <option value="3">224.0.0.0 [/3]</option>
-        <option value="4">240.0.0.0 [/4]</option>
-        <option value="5">248.0.0.0 [/5]</option>
-        <option value="6">252.0.0.0 [/6]</option>
-        <option value="7">254.0.0.0 [/7]</option>
-        <option value="8">255.0.0.0 [/8]</option>
+  <body class="calculator">
+    <div class="container">
+      <!-- Data that calculations are based on -->
+      <div class="data-entry data-entry--passed">
+        <div class="label">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-edit-3"
+          >
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          Entered data
+        </div>
+        <div class="address-entry address-entry--ip">
+          <span class="address-label">IP</span>
+          <span class="address-value">N/A</span>
+        </div>
+        <div class="address-entry address-entry--mask">
+          <span class="address-label">Mask</span>
+          <span class="address-value">N/A</span>
+        </div>
+      </div>
 
-        <option value="9">255.128.0.0 [/9]</option>
-        <option value="10">255.192.0.0 [/10]</option>
-        <option value="11">255.224.0.0 [/11]</option>
-        <option value="12">255.240.0.0 [/12]</option>
-        <option value="13">255.248.0.0 [/13]</option>
-        <option value="14">255.252.0.0 [/14]</option>
-        <option value="15">255.254.0.0 [/15]</option>
-        <option value="16">255.255.0.0 [/16]</option>
+      <div class="two-columns">
+        <!-- Calculated values in Decimal -->
+        <div class="data-entry data-entry--decimal">
+          <div class="label">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-hash"
+            >
+              <line x1="4" y1="9" x2="20" y2="9"></line>
+              <line x1="4" y1="15" x2="20" y2="15"></line>
+              <line x1="10" y1="3" x2="8" y2="21"></line>
+              <line x1="16" y1="3" x2="14" y2="21"></line>
+            </svg>
+            Decimal Representation
+          </div>
+          <div class="address-entry address-entry--network">
+            <span class="address-label">Network</span>
+            <span class="address-value">N/A</span>
+          </div>
+          <div class="address-entry address-entry--broadcast">
+            <span class="address-label">Broadcast</span>
+            <span class="address-value">N/A</span>
+          </div>
+          <div class="address-entry address-entry--min-host">
+            <span class="address-label">Min Host</span>
+            <span class="address-value">N/A</span>
+          </div>
+          <div class="address-entry address-entry--max-host">
+            <span class="address-label">Max Host</span>
+            <span class="address-value">N/A</span>
+          </div>
+        </div>
 
-        <option value="17">255.255.128.0 [/17]</option>
-        <option value="18">255.255.192.0 [/18]</option>
-        <option value="19">255.255.224.0 [/19]</option>
-        <option value="20">255.255.240.0 [/20]</option>
-        <option value="21">255.255.248.0 [/21]</option>
-        <option value="22">255.255.252.0 [/22]</option>
-        <option value="23">255.255.254.0 [/23]</option>
-        <option value="24">255.255.255.0 [/24]</option>
+        <!-- Additional Info -->
+        <div class="data-entry data-entry--additional-info">
+          <div class="label">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-info"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            Additional Info
+          </div>
+          <div class="address-entry address-entry--ip">IP: <span>N/A</span></div>
+          <div class="address-entry address-entry--mask">Mask: <span>N/A</span></div>
+        </div>
+      </div>
 
-        <option value="25">255.255.255.128 [/25]</option>
-        <option value="26">255.255.255.192 [/26]</option>
-        <option value="27">255.255.255.224 [/27]</option>
-        <option value="28">255.255.255.240 [/28]</option>
-        <option value="29">255.255.255.248 [/29]</option>
-        <option value="30">255.255.255.252 [/30]</option>
-        <option value="31">255.255.255.254 [/31]</option>
-        <option value="32">255.255.255.255 [/32]</option>
-      </select>
-      <button type="submit">Submit</button>
-    </form>
+      <!-- Calculated values in Binary -->
+      <div class="data-entry data-entry--binary">
+        <div class="label">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-cpu"
+          >
+            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+          Binary Calculations
+        </div>
+        <div class="mask-split"></div>
+        <div class="address-entry address-entry--network">
+          <span class="address-label">Network</span>
+          <span class="address-value">
+            <div class="octet">00000000</div>
+            <div class="octet octet--altered-after">
+              <div class="bit-split">000</div>
+              <div class="bit-split">00000</div>
+            </div>
+            <div class="octet">00000000</div>
+            <div class="octet">00000000</div>
+          </span>
+        </div>
+        <div class="address-entry address-entry--broadcast">
+          <span class="address-label">Broadcast</span>
+          <span class="address-value">
+            <div class="octet">00000000</div>
+            <div class="octet octet--altered-after">
+              <div class="bit-split">000</div>
+              <div class="bit-split">00000</div>
+            </div>
+            <div class="octet">00000000</div>
+            <div class="octet">00000000</div>
+          </span>
+        </div>
+        <div class="address-entry address-entry--min-host">
+          <span class="address-label">Min Host</span>
+          <span class="address-value">
+            <div class="octet">00000000</div>
+            <div class="octet octet--altered-after">
+              <div class="bit-split">000</div>
+              <div class="bit-split">00000</div>
+            </div>
+            <div class="octet">00000000</div>
+            <div class="octet">00000000</div>
+          </span>
+        </div>
+        <div class="address-entry address-entry--max-host">
+          <span class="address-label">Max Host</span>
+          <span class="address-value">
+            <div class="octet">00000000</div>
+            <div class="octet octet--altered-after">
+              <div class="bit-split">000</div>
+              <div class="bit-split">00000</div>
+            </div>
+            <div class="octet">00000000</div>
+            <div class="octet">00000000</div>
+          </span>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

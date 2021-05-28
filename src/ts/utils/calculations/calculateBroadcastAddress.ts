@@ -3,7 +3,8 @@ import Mask from "../../interfaces/Mask";
 import modifyIPViaMask from "./modifyIPViaMask";
 
 const calculateBroadcastAddress = (ip: IP, mask: Mask): IP => {
-  return modifyIPViaMask(ip, mask, "1");
+  const broadcastAddress = modifyIPViaMask(ip, mask, "1");
+  return broadcastAddress;
 };
 
 export default calculateBroadcastAddress;

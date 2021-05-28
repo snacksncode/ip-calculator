@@ -1,0 +1,23 @@
+.home {
+  .intro__wrapper {
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-clr-300);
+    border: 1px solid var(--bg-clr-200);
+    max-width: 540px;
+    box-shadow: var(--shadow-standard);
+    .heading {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .container {
+    flex: 1;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}

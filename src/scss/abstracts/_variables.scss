@@ -7,6 +7,7 @@ body {
   --bg-clr-400: #222222;
   --bg-clr-300: #333333;
   --bg-clr-200: #444444;
+  --bg-clr-100: #666666;
 
   --text-clr-400: #f4f4f4;
   --text-clr-500: #dddddd;
@@ -17,4 +18,6 @@ body {
   --accent-300: hsl(213, 64%, 70%);
 
   --accent-success: hsl(110, 50%, 65%);
+
+  --shadow-standard: 0 0 15px rgba(0, 0, 0, 0.2);
 }

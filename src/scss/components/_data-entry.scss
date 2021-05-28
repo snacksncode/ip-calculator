@@ -1,0 +1,170 @@
+.data-entry {
+  padding: 2rem 1.5rem 1.5rem;
+  box-shadow: var(--shadow-standard);
+  position: relative;
+  z-index: 1;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-clr-300);
+  border: 1px solid var(--bg-clr-200);
+  .address-entry {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: baseline;
+    position: relative;
+    .address-label {
+      user-select: none;
+      font-size: 1rem;
+    }
+    .address-value {
+      font-size: 1.5rem;
+      user-select: auto;
+      font-family: "DM Mono", monospace;
+      cursor: text;
+      font-weight: 500;
+      letter-spacing: -0.0625em; //16px * 0.0625 = 1px
+      margin-left: 1em;
+      display: flex;
+      letter-spacing: 0px;
+      color: var(--text-clr-500);
+      .octet {
+        display: flex;
+        &--altered-after ~ .octet,
+        .bit-split + .bit-split,
+        &--altered-after::after {
+          color: var(--accent-400);
+        }
+        &--affected {
+          color: var(--accent-400);
+        }
+        &--mask-split {
+          margin-left: 1rem;
+          &::after {
+            color: inherit;
+          }
+        }
+        .bit {
+          color: var(--text-clr-500);
+          &--affected {
+            color: var(--accent-400);
+          }
+          &--splitted {
+            margin-left: 1rem;
+          }
+        }
+      }
+      .octet:not(:last-child) {
+        &::after {
+          content: ".";
+          letter-spacing: inherit;
+        }
+      }
+    }
+    &::after {
+      content: "";
+      width: 2px;
+      height: 80%;
+      top: 10%;
+      left: calc(80px + 0.5rem);
+      background-color: var(--bg-clr-100);
+      position: absolute;
+    }
+    &--mask {
+      .address-value {
+        align-items: baseline;
+      }
+      .address-bits {
+        margin-left: 0.5em;
+        font-size: 0.55em;
+        color: var(--text-clr-600);
+      }
+    }
+  }
+  .label {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    top: -2rem;
+    font-size: 0.9rem;
+    border-radius: var(--border-radius);
+    transform: translateY(50%);
+    background-color: var(--bg-clr-200);
+    border: 1px solid var(--bg-clr-100);
+    padding: 0.5em 1.5em;
+    margin-top: 0;
+    font-weight: 700;
+    position: absolute;
+    svg {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+  & + & {
+    margin-top: 3rem;
+  }
+  &--passed {
+    display: flex;
+    .address-entry {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .address-label {
+        font-size: 1rem;
+      }
+      .address-value {
+        font-size: 1.75rem;
+        margin: 0.25rem 0 0 0;
+        font-weight: 500;
+        color: var(--accent-300);
+      }
+      &::after {
+        display: none;
+      }
+    }
+  }
+  &--calculated {
+    .placeholder {
+      text-align: center;
+      font-size: 1.25rem;
+      color: var(--bg-clr-100);
+    }
+  }
+  &--binary {
+    position: relative;
+    .mask-split {
+      position: absolute;
+      top: 50%;
+      font-size: 1.5rem;
+      //get the line to the start of address-value
+      //then use transform with ch unit to move exactly x chars
+      left: calc(80px + 1.5rem + 1em);
+      transform: translateX(calc(12ch + 0.5rem - 1px)) translateY(-50%);
+      font-family: "DM Mono", monospace;
+      width: 2px;
+      height: 75%;
+      background-color: var(--accent-400);
+      &::before {
+        content: "Mask";
+        white-space: nowrap;
+        position: absolute;
+        text-transform: uppercase;
+        top: -0.75rem;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.35em 0.75em;
+        font-size: 0.7rem;
+        border-radius: 3px;
+        font-weight: 500;
+        background-color: var(--accent-400);
+        color: var(--text-clr-400);
+      }
+    }
+  }
+  &--additional-info {
+    .address-entry {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

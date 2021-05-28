@@ -13,7 +13,7 @@ const calculateMinMaxHostAddress = (referenceAddress: IP, type: "min" | "max"): 
       string: null,
     },
   };
-  ipObject.binary.octets = referenceAddress.binary.octets;
+  ipObject.binary.octets = [...referenceAddress.binary.octets];
   const lastOctet = ipObject.binary.octets[3];
   const lastOctetAsArray = lastOctet.split("");
   lastOctetAsArray[7] = type === "max" ? "0" : "1";
