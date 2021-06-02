@@ -9,3 +9,10 @@
     margin: 0 !important;
   }
 }
+
+@media (max-width: 768px) {
+  .two-columns {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+}

@@ -4,6 +4,8 @@ type ContainerType = "binary" | "decimal";
 
 function getContainerForAddress(addressName: AddressUIName, type: ContainerType): HTMLElement {
   switch (addressName) {
+    case "ip":
+      return document.querySelector(`.data-entry--binary .address-entry--binary-ip .address-value`);
     case "network":
       return document.querySelector(`.data-entry--${type} .address-entry--network .address-value`);
     case "broadcast":

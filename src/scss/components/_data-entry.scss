@@ -25,16 +25,16 @@
       margin-left: 1em;
       display: flex;
       letter-spacing: 0px;
-      color: var(--text-clr-500);
       .octet {
+        --clr-pre-split: var(--text-clr-400);
+        --clr-post-split: var(--accent-400);
+        color: var(--clr-pre-split);
         display: flex;
-        &--altered-after ~ .octet,
-        .bit-split + .bit-split,
-        &--altered-after::after {
-          color: var(--accent-400);
+        .bit-split + .bit-split {
+          color: var(--clr-post-split);
         }
         &--affected {
-          color: var(--accent-400);
+          color: var(--clr-post-split);
         }
         &--mask-split {
           margin-left: 1rem;
@@ -43,9 +43,9 @@
           }
         }
         .bit {
-          color: var(--text-clr-500);
+          color: var(--clr-pre-split);
           &--affected {
-            color: var(--accent-400);
+            color: var(--clr-post-split);
           }
           &--splitted {
             margin-left: 1rem;
@@ -122,33 +122,29 @@
       }
     }
   }
-  &--calculated {
-    .placeholder {
-      text-align: center;
-      font-size: 1.25rem;
-      color: var(--bg-clr-100);
-    }
-  }
   &--binary {
     position: relative;
+    .address-entry {
+      align-items: center;
+    }
     .mask-split {
       position: absolute;
-      top: 50%;
+      bottom: 1rem;
       font-size: 1.5rem;
       //get the line to the start of address-value
       //then use transform with ch unit to move exactly x chars
       left: calc(80px + 1.5rem + 1em);
-      transform: translateX(calc(12ch + 0.5rem - 1px)) translateY(-50%);
+      transform: translateX(calc(12ch + 0.5rem - 1px));
       font-family: "DM Mono", monospace;
       width: 2px;
-      height: 75%;
+      height: calc(100% - 1.5em);
       background-color: var(--accent-400);
       &::before {
         content: "Mask";
         white-space: nowrap;
         position: absolute;
         text-transform: uppercase;
-        top: -0.75rem;
+        top: 4em;
         left: 50%;
         transform: translateX(-50%);
         padding: 0.35em 0.75em;
@@ -159,12 +155,79 @@
         color: var(--text-clr-400);
       }
     }
+    .address-entry--binary-ip {
+      margin-bottom: 2rem;
+    }
+    .address-entry--binary-ip {
+      .address-value {
+        .octet {
+          --clr-pre-split: var(--text-clr-400);
+          --clr-post-split: var(--accent-error);
+          --opacity: 0.5;
+          color: var(--clr-pre-split);
+          &--affected:not(.octet--splitted) {
+            opacity: var(--opacity);
+          }
+          &--affected {
+            color: var(--clr-post-split);
+            &.octet--splitted {
+              .bit--affected {
+                opacity: var(--opacity);
+              }
+            }
+            ~ .octet {
+              opacity: var(--opacity);
+              &::after {
+                opacity: 1;
+              }
+            }
+            &::after {
+              opacity: var(--opacity);
+            }
+          }
+          .bit {
+            color: var(--clr-pre-split);
+            &--affected {
+              color: var(--clr-post-split);
+            }
+          }
+        }
+      }
+    }
+    // .address-entry--binary-mask,
+    // .address-entry--binary-ip {
+    //   .address-value .octet {
+    //     color: var(--text-clr-500);
+    //     .bit--affected {
+    //       color: var(--text-clr-500);
+    //     }
+    //   }
+    // }
+  }
+  &--decimal {
+    .address-entry {
+      align-items: center;
+    }
   }
   &--additional-info {
     .address-entry {
+      grid-template-columns: 70px 1fr;
+      .address-value {
+        color: var(--accent-300);
+        font-size: 1.125rem;
+      }
+      & + .address-entry {
+        margin-top: 0.25rem;
+      }
       &::after {
-        display: none;
+        left: calc(65px + 0.5rem);
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .address-value {
+    font-size: 1.25rem !important;
   }
 }

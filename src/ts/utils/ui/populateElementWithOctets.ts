@@ -19,6 +19,10 @@ function populateElementWithOctets(
     return;
   }
   const maskBits = mask.bits;
+  if (maskBits === 32) {
+    populateWithoutSplit(octets, 99, containerElement);
+    return;
+  }
   if (maskBits === 8 || maskBits === 16 || maskBits === 24) {
     populateWithoutSplit(octets, affectedOctetsFromIndex, containerElement, {
       status: true,

@@ -1,4 +1,7 @@
 .calculator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .container {
     max-width: 768px;
     padding: 2rem 1rem;
